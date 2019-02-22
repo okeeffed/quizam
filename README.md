@@ -2,6 +2,8 @@
 
 > Like Shazam for CLI quizzes but without the wizardry
 
+![GIF of Quizam](https://media.giphy.com/media/1oCYIQ1ZwweQ1sCgxg/giphy.gif)
+
 ## Install
 
 ```sh

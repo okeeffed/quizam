@@ -1,5 +1,5 @@
-name: Hello Quizam!
-author: Unknown
+name: New Quiz
+author: Dennis O'Keeffe
 quiz:
   - type: select
     question: What is the best CLI app?
