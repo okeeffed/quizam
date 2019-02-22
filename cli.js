@@ -62,11 +62,12 @@ const init = () => {
         author: 'Dennis O\'Keeffe',
         quiz: [
             {
+                type: 'select',
                 question: 'What is the best CLI app?',
-                options: [
+                choices: [
                     "Quiz Gon Gin", "Quizam", "Quizalicious", "Quiztacular"
                 ],
-                answer: 2
+                answer: "Quizam"
             }
         ]
     }

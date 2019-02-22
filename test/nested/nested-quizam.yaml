@@ -1,10 +1,35 @@
 name: Nested Hello Quizam!
 author: Dennis O'Keeffe
 quiz:
-    - question: What is the best CLI app?
+    - type: select
+      question: What is the best CLI app?
       choices:
           - Quiz Gon Gin
           - Quizam
           - Quizalicious
           - Quiztacular
       answer: Quizam
+    - type: select
+      question: Where is Melbourne?
+      choices:
+          - USA
+          - England
+          - Australia
+          - New Calidonia
+      answer: Australia
+    - type: confirm
+      question: Is Quizam your favourite?
+      answer: true
+    - type: multi
+      question: What equals 17?
+      choices:
+          - 10 + 7
+          - 20 - 4
+          - 1 + 17
+          - 5 + 5 + 5 + 2
+      answer:
+          - 10 + 7
+          - 5 + 5 + 5 + 2
+    - type: input
+      question: Spell "quizam"?
+      answer: quizam
