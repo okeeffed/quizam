@@ -40,7 +40,7 @@ $ quizam help
     > # recursively searches for *quizam.yaml files ignoring build and dist dir
     > # runs quiz
 
-    $ docs run path/to/quizam.yaml
+    $ quizam run path/to/quizam.yaml
     > # runs path/to/quizam.yaml quiz
 
     Built by Dennis O'Keeffe
