@@ -1,0 +1,10 @@
+name: Trees
+author: Dennis O'Keeffe
+quiz:
+    - question: What is the best CLI app?
+      choices:
+          - Quiz Gon Gin
+          - Quizam
+          - Quizalicious
+          - Quiztacular
+      answer: Quizam
