@@ -70,6 +70,8 @@ const init = () => {
             }
         ]
     }
+
+    fs.writeFileSync(cwd + '/quizam.yaml', yaml.safeDump(base));
 }
 
 /**
@@ -246,9 +248,12 @@ const run = async() => {
     }
 }
 
-switch (true) {
-    case argv._[0] === 'run':
+switch (argv._[0]) {
+    case 'run':
         run();
+        break;
+    case 'init':
+        init();
         break;
     default:
         console.log(help);
