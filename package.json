@@ -1,7 +1,7 @@
 {
   "name": "quizam",
   "repository": "okeeffe/quizam",
-  "version": "1.0.22",
+  "version": "1.0.38",
   "license": "MIT",
   "author": {
     "name": "Dennis O'Keeffe",
@@ -29,7 +29,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn test",
-      "post-commit": "yarn version --patch",
+      "post-commit": "npm version --patch",
       "pre-push": "yarn test"
     }
   },
