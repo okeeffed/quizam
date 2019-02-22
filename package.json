@@ -29,7 +29,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn test",
-      "post-push": "npm version patch",
       "pre-push": "yarn test"
     }
   },
