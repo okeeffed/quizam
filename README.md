@@ -1,234 +1,130 @@
-# Doculatte
+# Quizam
 
-> A JavaScript Docblockr-to-Markdown documentation writer.
-
-![Gif example of Doculatte](https://media.giphy.com/media/8vNZBu4rJYB6GX6qnS/giphy.gif)
+> Like Shazam for CLI quizzes but without the wizardry
 
 ## Install
 
 ```sh
-npm i -g doculatte
+npm i -g quizam
 ```
 
 ## Usage
 
 ```sh
-$ doculatte help
+$ quizam help
 
-    Doculatte
 
-    Recursively build markdown docs for JS files
-
-    Command                 Exec
-    ---------------         ---------------
-
-    doculatte help          Display help
-    doculatte run [file]    Generate doc files or pass [file] as file/to/path to generate doc for specific file
-
-    Flags                   Function
-    ---------------         ---------------
-    -i                      Ignore folders (paths as folders/files divided by commas)
-    -n                      Output doc name (only works for singular files)
-    -t                      Output name type VALUES=[snake|start|camel|kebab] (default is snake, overriden by -n)
-    -p                      Prefix doc file name (overriden by -n)
-    -s                      Suffix doc file name (overriden by -n, default is "docs")
-    -u                      Set output doc name to uppercase
-
-    Examples
-    ---
-
-    $ doculatte run
-    > # recursively generate docs files
-    > Generated: path/to/file_docs.md
-
-    $ doculatte run path/to/file.js
-    > Generated: path/to/file_docs.md
-
-    $ doculatte run path/to/file.js -p prefix -s suffix -u
-    > Generated: path/to/PREFIX_FILE_SUFFIX.md
-
-    $ doculatte run path/to/file.js -p prefix -s suffix -u -t kebab
-    > Generated: path/to/PREFIX-FILE-SUFFIX.md
-
-    $ doculatte run path/to/file.js -p prefix -s suffix -t camel
-    > Generated: path/to/prefixFileSuffix.md
-
-    $ doculatte run path/to/file.js -p prefix -s suffix -t start
-    > Generated: path/to/Prefix File Suffix.md
-
-    $ doculatte run path/to/file.js -n custom-name
-    > Generated: path/to/custom-name.md
-
-    $ doculatte run -i folderOne,folderTwo,folderThree
-    > NOT Generated: path/to/folderOne/custom-name.md ...
-
-    Built by Dennis O'Keeffe
-
-    Twitter: @dendribbles
-    Github: https://github.com/okeeffed
-```
-
-## Quick Usage with npx
-
-```sh
-npx doculatte run
 ```
 
 ## Basic Example
 
-Given a basic folder structure:
+`quizam init` to initialise a `quizam.yaml` base file.
 
-```sh
-.
-├── five
-│   └── index.js
-├── four
-│   └── index.js
-├── one
-│   └── index.js
-├── seven
-│   └── index.js
-├── six
-│   └── index.js
-├── three
-│   └── index.js
-└── two
-    └── index.js
+```yaml
+name: Hello Quizam!
+author: Dennis O'Keeffe
+quiz:
+  - type: select
+    question: What is the best CLI app?
+    choices:
+      - Quiz Gon Gin
+      - Quizam
+      - Quizalicious
+      - Quiztacular
+    answer: Quizam
+  - type: select
+    question: Where is Melbourne?
+    choices:
+      - USA
+      - England
+      - Australia
+      - New Calidonia
+    answer: Australia
+  - type: confirm
+    question: Is Quizam your favourite?
+    answer: true
+  - type: multi
+    question: What equals 17?
+    choices:
+      - 10 + 7
+      - 20 - 4
+      - 1 + 17
+      - 5 + 5 + 5 + 2
+    answer:
+      - 10 + 7
+      - 5 + 5 + 5 + 2
+  - type: input
+    question: Spell "quizam"?
+    answer: quizam
 ```
 
-With example `index.js`:
+`quizam run` to run the quiz CLI.
 
-```javascript
-/**
- * This file is a test example to generate DOCS.md
- * 
- * @author Dennis O'Keeffe
- */
-class Mathematics {
-    /**
-     * Multiply the two args
-     * 
-     * @param {number} a 
-     * @param {number} b
-     * @memberof Mathematics
-     */
-    multiply = (a, b) => {
-        return a * b;
-    }
+## Types
 
-    /**
-     * Add the two args together
-     * 
-     * @param {number} a 
-     * @param {number} b 
-     * @memberof Mathematics
-     */
-    add = (a, b) => {
-        return a + b;
-    }
+### Input
 
-    /**
-     * Subtract the two args together
-     * 
-     * @param {number} a 
-     * @param {number} b 
-     * @memberof Mathematics
-     */
-    subtract = (a, b) => {
-        return a - b;
-    }
-}
+Compares user input to answer.
+
+```yaml
+name: Hello Quizam!
+author: Dennis O'Keeffe
+quiz:
+  - type: input
+    question: Spell "quizam"?
+    answer: quizam
 ```
 
-Running:
+### Select
 
-```sh
-doculatte run
+Gives list to select single option.
+
+```yaml
+name: Hello Quizam!
+author: Dennis O'Keeffe
+quiz:
+  - type: select
+    question: What is the best CLI app?
+    choices:
+      - Quiz Gon Gin
+      - Quizam
+      - Quizalicious
+      - Quiztacular
+    answer: Quizam
 ```
 
-Will produce structure:
+### Multiselect
 
-```sh
-.
-├── five
-│   ├── index.js
-│   └── index_docs.md
-├── four
-│   ├── index.js
-│   └── index_docs.md
-├── one
-│   ├── index.js
-│   └── index_docs.md
-├── seven
-│   ├── index.js
-│   └── index_docs.md
-├── six
-│   ├── index.js
-│   └── index_docs.md
-├── three
-│   ├── index.js
-│   └── index_docs.md
-└── two
-    ├── index.js
-    └── index_docs.md
+Gives list to select multiple options.
+
+```yaml
+name: Hello Quizam!
+author: Dennis O'Keeffe
+quiz:
+  - type: multi
+    question: What equals 17?
+    choices:
+      - 10 + 7
+      - 20 - 4
+      - 1 + 17
+      - 5 + 5 + 5 + 2
+    answer:
+      - 10 + 7
+      - 5 + 5 + 5 + 2
 ```
 
-With `index_docs.md` looking like:
+### Confirm
 
-```md
-<a name="Mathematics"></a>
+Y/n response to a question.
 
-## Mathematics
-This file is a test example to generate DOCS.md
-
-**Kind**: global class  
-**Author**: Dennis O'Keeffe  
-
-* [Mathematics](#Mathematics)
-    * [.multiply](#Mathematics.multiply)
-    * [.add](#Mathematics.add)
-    * [.subtract](#Mathematics.subtract)
-
-<a name="Mathematics.multiply"></a>
-
-### Mathematics.multiply
-Multiply the two args
-
-**Kind**: static property of [<code>Mathematics</code>](#Mathematics)  
-
-| Param | Type |
-| --- | --- |
-| a | <code>number</code> | 
-| b | <code>number</code> | 
-
-<a name="Mathematics.add"></a>
-
-### Mathematics.add
-Add the two args together
-
-**Kind**: static property of [<code>Mathematics</code>](#Mathematics)  
-
-| Param | Type |
-| --- | --- |
-| a | <code>number</code> | 
-| b | <code>number</code> | 
-
-<a name="Mathematics.subtract"></a>
-
-### Mathematics.subtract
-Subtract the two args together
-
-**Kind**: static property of [<code>Mathematics</code>](#Mathematics)  
-
-| Param | Type |
-| --- | --- |
-| a | <code>number</code> | 
-| b | <code>number</code> | 
+```yaml
+name: Hello Quizam!
+author: Dennis O'Keeffe
+quiz:
+  - type: confirm
+    question: Is Quizam your favourite?
+    answer: true
 ```
-
-## FAQ
-
-TBD.
 
 ## License
 
