@@ -1,6 +1,6 @@
 {
-  "name": "doculatte",
-  "repository": "okeeffe/doculatte",
+  "name": "quizam",
+  "repository": "okeeffe/quizam",
   "version": "1.0.2",
   "license": "MIT",
   "author": {
@@ -9,7 +9,7 @@
     "url": "https://dennisokeeffe.com"
   },
   "bin": {
-    "doculatte": "cli.js"
+    "quizam": "cli.js"
   },
   "dependencies": {
     "chalk": "^2.4.2",
