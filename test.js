@@ -14,7 +14,7 @@ test('should return help when no valid argument pass', async t => {
 });
 
 test('should generate base quizam.yaml file', async t => {
-    await execa('./cli.js', ['init']);
+    await execa('./cli.js', ['init', '-y']);
     t.is(fs.existsSync(cwd + '/quizam.yaml'), true);
 });
 

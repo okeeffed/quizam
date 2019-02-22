@@ -13,7 +13,40 @@ npm i -g quizam
 ```sh
 $ quizam help
 
+    Quizam
 
+    Quiz yourself using yaml files!
+
+    Command                 Exec
+    ---------------         ---------------
+
+    quizam help             Display help
+    quizam init             Initialise quizam.yaml file
+    quizam run [file]       Generate doc files or pass [file] as file/to/path to generate doc for specific file
+
+    Flags                   Function
+    ---------------         ---------------
+    -i                      Ignore folders (paths as folders/files divided by commas)
+    -v                      Verbose errors
+
+    Examples
+    ---
+
+    $ quizam run
+    > # recursively searches for *quizam.yaml files
+    > # runs quiz
+
+    $ quizam run -i=build, dist
+    > # recursively searches for *quizam.yaml files ignoring build and dist dir
+    > # runs quiz
+
+    $ docs run path/to/quizam.yaml
+    > # runs path/to/quizam.yaml quiz
+
+    Built by Dennis O'Keeffe
+
+    Twitter: @dendribbles
+    Github: https://github.com/okeeffed
 ```
 
 ## Basic Example

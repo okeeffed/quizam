@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Doculatte => JS markdown documentation builder
+ * Quizam. A no-fuss yaml CLI quiz runner.
  *
  * @author
  * Dennis O'Keeffe
@@ -53,26 +53,42 @@ const help = `
 `;
 
 /**
- * Initialise a quiz
+ * Initialise a quiz. Asks for name and author then writes ./quizam.yaml.
  *
  */
-const init = () => {
-    const base = {
-        name: 'Hello Quizam!',
-        author: 'Dennis O\'Keeffe',
-        quiz: [
-            {
-                type: 'select',
-                question: 'What is the best CLI app?',
-                choices: [
-                    "Quiz Gon Gin", "Quizam", "Quizalicious", "Quiztacular"
-                ],
-                answer: "Quizam"
-            }
-        ]
-    }
+const init = async() => {
+    try {
+        const base = {
+            name: 'Hello Quizam!',
+            author: 'Unknown',
+            quiz: [
+                {
+                    type: 'select',
+                    question: 'What is the best CLI app?',
+                    choices: [
+                        "Quiz Gon Gin", "Quizam", "Quizalicious", "Quiztacular"
+                    ],
+                    answer: "Quizam"
+                }
+            ]
+        }
 
-    fs.writeFileSync(cwd + '/quizam.yaml', yaml.safeDump(base));
+        if (!argv.y) {
+            const name = await input({question: "Quiz name?"});
+            base.name = name.answer;
+            const author = await input({question: "Author?"});
+            base.author = author.answer;
+        }
+
+        fs.writeFileSync(cwd + '/quizam.yaml', yaml.safeDump(base));
+    } catch (err) {
+        if (argv.v) {
+            console.error(err);
+        }
+
+        console.error('An error occured. Exiting program.');
+        process.exit();
+    }
 }
 
 /**
