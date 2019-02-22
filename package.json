@@ -13,18 +13,9 @@
   },
   "dependencies": {
     "chalk": "^2.4.2",
-    "fs-extra": "^6.0.1",
     "js-yaml": "^3.12.1",
-    "jsdoc-to-markdown": "^4.0.1",
-    "lodash.camelcase": "^4.3.0",
-    "lodash.capitalize": "^4.2.1",
-    "lodash.kebabcase": "^4.1.1",
-    "lodash.snakecase": "^4.1.1",
-    "lodash.startcase": "^4.4.0",
-    "lodash.upperfirst": "^4.3.1",
     "prompts": "^2.0.3",
     "recursive-readdir": "^2.2.2",
-    "signale": "^1.1.0",
     "yargs-parser": "^10.0.0"
   },
   "scripts": {

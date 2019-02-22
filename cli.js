@@ -13,22 +13,7 @@ var cwd = process.cwd();
 const prompts = require('prompts');
 const yaml = require('js-yaml')
 const recursive = require('recursive-readdir');
-const kebabCase = require('lodash.kebabcase');
-const camelCase = require('lodash.camelcase');
-const startCase = require('lodash.startcase');
-const snakeCase = require('lodash.snakecase');
 const chalk = require('chalk');
-const path = require('path');
-
-const options = {
-    types: {
-        warning: {
-            badge: '⚠',
-            color: 'yellow',
-            label: 'warning'
-        }
-    }
-};
 
 const help = `
     Quizam
