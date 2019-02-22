@@ -1,7 +1,7 @@
 {
   "name": "quizam",
   "repository": "okeeffe/quizam",
-  "version": "1.0.50",
+  "version": "1.0.51",
   "license": "MIT",
   "author": {
     "name": "Dennis O'Keeffe",
@@ -45,10 +45,15 @@
     "npm",
     "package",
     "pkg",
-    "docs",
-    "markdown",
-    "generate",
-    "documentation",
+    "quiz",
+    "question",
+    "is",
+    "has",
+    "input",
+    "select",
+    "autocomplete",
+    "answer",
+    "confirm",
     "javascript"
   ]
 }
