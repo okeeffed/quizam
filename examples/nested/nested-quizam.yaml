@@ -1,0 +1,11 @@
+name: Nested Quizam
+author: Dennis O'Keeffe
+quiz:
+  - type: select
+    question: What is the best CLI app?
+    choices:
+      - Quiz Gon Gin
+      - Quizam
+      - Quizalicious
+      - Quiztacular
+    answer: Quizam

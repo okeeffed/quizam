@@ -24,7 +24,7 @@ const help = `
     ---------------         ---------------
 
     quizam help             Display help
-    quizam init             Initialise quizam.yaml file
+    quizam init [file]      Initialise quizam.yaml file at base or designated [file] path (must include quizam.yaml)
     quizam run [file]       Generate doc files or pass [file] as file/to/path to generate doc for specific file 
 
     Flags                   Function
@@ -45,6 +45,12 @@ const help = `
 
     $ quizam run path/to/quizam.yaml
     > # runs path/to/quizam.yaml quiz
+
+    $ quizam init
+    > # create quizam.yaml in current directory
+    
+    $ quizam init path/to/custom-quizam.yaml
+    > # create quiz at path/to/custom-quizam.yaml
 
     Built by Dennis O'Keeffe
 
@@ -73,6 +79,17 @@ const init = async() => {
             ]
         }
 
+        // Set output path destination
+        let dest = typeof argv._[1] !== 'undefined'
+            ? cwd + '/' + argv._[1]
+            : cwd + '/quizam.yaml';
+
+        if (!dest.includes('quizam.yaml')) {
+            const err = 'You must provided a destination with quizam.yaml at the end of the path';
+            console.error(chalk.red(err));
+            throw new Error(err);
+        }
+
         if (!argv.y) {
             const name = await input({question: "Quiz name?"});
             base.name = name.answer;
@@ -80,13 +97,13 @@ const init = async() => {
             base.author = author.answer;
         }
 
-        fs.writeFileSync(cwd + '/quizam.yaml', yaml.safeDump(base));
+        fs.writeFileSync(dest, yaml.safeDump(base));
     } catch (err) {
         if (argv.v) {
             console.error(err);
         }
 
-        console.error('An error occured. Exiting program.');
+        console.error('An error occured. Exiting program. Use -v flag for more info.');
         process.exit();
     }
 }

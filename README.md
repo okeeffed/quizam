@@ -23,7 +23,7 @@ $ quizam help
     ---------------         ---------------
 
     quizam help             Display help
-    quizam init             Initialise quizam.yaml file
+    quizam init [file]      Initialise quizam.yaml file at base or designated [file] path (must include quizam.yaml)
     quizam run [file]       Generate doc files or pass [file] as file/to/path to generate doc for specific file
 
     Flags                   Function
@@ -44,6 +44,12 @@ $ quizam help
 
     $ quizam run path/to/quizam.yaml
     > # runs path/to/quizam.yaml quiz
+
+    $ quizam init
+    > # create quizam.yaml in current directory
+
+    $ quizam init path/to/custom-quizam.yaml
+    > # create quiz at path/to/custom-quizam.yaml
 
     Built by Dennis O'Keeffe
 
@@ -160,6 +166,10 @@ quiz:
     question: Is Quizam your favourite?
     answer: true
 ```
+
+## Dependencies
+
+[nodeca/js-yaml](https://github.com/nodeca/js-yaml)
 
 ## License
 

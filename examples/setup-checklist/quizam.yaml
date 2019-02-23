@@ -1,0 +1,18 @@
+name: Repo setup
+author: Dennis O'Keeffe
+quiz:
+    - type: confirm
+      question: Have you run "yarn install"?
+      answer: true
+    - type: confirm
+      question: Have you run "composer install"?
+      answer: true
+    - type: confirm
+      question: Have you created a JIRA board?
+      answer: true
+    - type: confirm
+      question: Have you set up test suites?
+      answer: true
+    - type: confirm
+      question: Have you set up git hooks?
+      answer: true
