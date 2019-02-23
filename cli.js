@@ -14,6 +14,7 @@ const prompts = require('prompts');
 const yaml = require('js-yaml')
 const recursive = require('recursive-readdir');
 const chalk = require('chalk');
+const path = require('path');
 
 const help = `
     Quizam
@@ -81,8 +82,8 @@ const init = async() => {
 
         // Set output path destination
         let dest = typeof argv._[1] !== 'undefined'
-            ? cwd + '/' + argv._[1]
-            : cwd + '/quizam.yaml';
+            ? path.resolve(argv._[1])
+            : path.resolve('quizam.yaml');
 
         if (!dest.includes('quizam.yaml')) {
             const err = 'You must provided a destination with quizam.yaml at the end of the path';
@@ -173,7 +174,7 @@ const run = async() => {
 
         let target = cwd;
         if (!isFile && typeof argv._[1] !== 'undefined') {
-            target = cwd + '/' + argv._[1];
+            target = path.resolve(argv._[1]);
         }
 
         let ignoreFiles = [];
@@ -184,7 +185,7 @@ const run = async() => {
         }
 
         let files = isFile
-            ? [`${cwd}/${argv._[1]}`]
+            ? [path.resolve(argv._[1])]
             : await recursive(target, [
                 'node_modules', ...ignoreFiles,
                 '!*quizam.yaml'
