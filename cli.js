@@ -257,7 +257,6 @@ const run = async() => {
             }
 
             const similarity = stringSimilarity.compareTwoStrings(res.answer, quiz.answer);
-            console.log(similarity);
             if (quiz.type === 'multi') {
                 const isCorrect = quiz
                     .answer
@@ -269,7 +268,7 @@ const run = async() => {
                 res.answer === quiz.answer
                     ? logCorrect()
                     : logIncorrect(quiz);
-            } else if (similarity > 0.8) {
+            } else if (similarity >= 0.8) {
                 if (cleanse(res.answer) === cleanse(quiz.answer)) {
                     correct++;
                     console.log(chalk.green('Correct!\n'));
