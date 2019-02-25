@@ -1,11 +1,11 @@
-name: Hello Quizam!
-author: Unknown
+name: Updated Test
+author: Dennis O'Keeffe
 quiz:
   - type: select
     question: What is the best CLI app?
     choices:
       - Quiz Gon Gin
       - Quizam
-      - Quizan
+      - Quizalicious
       - Quiztacular
     answer: Quizam

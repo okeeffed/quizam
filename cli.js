@@ -14,6 +14,7 @@ const prompts = require('prompts');
 const yaml = require('js-yaml')
 const recursive = require('recursive-readdir');
 const chalk = require('chalk');
+const stringSimilarity = require('string-similarity');
 const path = require('path');
 
 const help = `
@@ -255,6 +256,8 @@ const run = async() => {
                 console.log('Correct answer:', quiz.answer, '\n');
             }
 
+            const similarity = stringSimilarity.compareTwoStrings(res.answer, quiz.answer);
+            console.log(similarity);
             if (quiz.type === 'multi') {
                 const isCorrect = quiz
                     .answer
@@ -266,9 +269,13 @@ const run = async() => {
                 res.answer === quiz.answer
                     ? logCorrect()
                     : logIncorrect(quiz);
-            } else if (cleanse(res.answer) === cleanse(quiz.answer)) {
-                correct++;
-                console.log(chalk.green('Correct!\n'));
+            } else if (similarity > 0.8) {
+                if (cleanse(res.answer) === cleanse(quiz.answer)) {
+                    correct++;
+                    console.log(chalk.green('Correct!\n'));
+                } else {
+                    console.log(chalk.yellow(`Close! Answer similarity is ${similarity}\n`));
+                }
             } else {
                 logIncorrect(quiz);
             }
